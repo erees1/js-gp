@@ -29,217 +29,225 @@
   </head>
 
   <body>
-    <div class="center-align kernels-container">
-        <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-4">
-            <div id="rbf-div" class="kernel-options">
-    
-              <!-- Header -->
-              <div class="kernel-header">
-                <h4>RBF Kernel</h4>
-                <div class="kernel-equation">
-                  $\sigma^2 \exp\left(-\frac{|{x-x^\prime}|^2}{2l^2}\right)$
-                  </div>
-                </div>
-    
-                  <div class="box ratio1_1">
-                    <div class="box-content">
-                      <div id="rbf-heatmap" class="kernel-heatmap"></div>
+    <section>
+      <div class='container'>
+        <div class='center-text'>
+        <h1>Gaussian Process - Interactive Demo</h1>
+      </div>
+        <p>This is an interactive implementation of a gaussian process written in javascript that runs right in the browser. To use simply click on the main chart to add 'observations' and watch the model update it's predictions! Three of the most common kernels are implemented: the radial basis function kernel, the linear kernel and the periodic kernel. It is possible to switch between them using the toggles above the chart. Adjusting the kernel parameters will adjust both the kernel visualization and the main plot. I hope you enjoy seeing this vizualization!</p>
+      <div class="center-align kernels-container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <div id="rbf-div" class="kernel-options">
+      
+                <!-- Header -->
+                <div class="kernel-header">
+                  <h4>RBF Kernel</h4>
+                  <div class="kernel-equation">
+                    $\sigma^2 \exp\left(-\frac{|{x-x^\prime}|^2}{2l^2}\right)$
                     </div>
                   </div>
-    
-                  <p>
-                    Variance: $\sigma$=
-                    <span id="rbfSigmaOuput" class="slider-output"></span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="1"
-                      value="1"
-                      class="slider2"
-                      id="rbfSigmaSlider"
-                      step="0.1"
-                    />
-                  </div>
-    
-                  <p>
-                    Length: $l$=
-                    <span id="rbfLengthOuput" class="slider-output">value:</span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="2"
-                      value="1"
-                      class="slider2"
-                      id="rbfLengthSlider"
-                      step="0.1"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-4">
-                <div id="linear-div" class="kernel-options">
-                  <!-- Header -->
-                  <div class="kernel-header">
-                    <h4>Linear Kernel</h4>
-                    <div class="kernel-equation">
-                      $\sigma_b^2 + \sigma^2 (x - c)(x^\prime - c)$
+      
+                    <div class="box ratio1_1">
+                      <div class="box-content">
+                        <div id="rbf-heatmap" class="kernel-heatmap"></div>
                       </div>
                     </div>
-    
-                  <div class="box ratio1_1">
-                    <div class="box-content">
-                      <div id="linear-heatmap" class="kernel-heatmap"></div>
+      
+                    <p>
+                      Variance: $\sigma$=
+                      <span id="rbfSigmaOuput" class="slider-output"></span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="1"
+                        value="1"
+                        class="slider2"
+                        id="rbfSigmaSlider"
+                        step="0.1"
+                      />
                     </div>
-                  </div>
-    
-                  <p>
-                    Variance: $\sigma$ =
-                    <span id="linearSigmaAOuput" class="slider-output"></span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="1"
-                      value="0.5"
-                      class="slider2"
-                      id="linearSigmaASlider"
-                      step="0.1"
-                    />
-                  </div>
-                  <p>
-                    Variance: $\sigma_b$ =
-                    <span id="linearSigmaBOuput" class="slider-output"></span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="1"
-                      value="0.5"
-                      class="slider2"
-                      id="linearSigmaBSlider"
-                      step="0.1"
-                    />
-                  </div>
-    
-                  <p>
-                    Offset: $c$ =
-                    <span id="linearOffsetOuput" class="slider-output">value:</span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="-2"
-                      max="2"
-                      value="0"
-                      class="slider2"
-                      id="linearOffsetSlider"
-                      step="0.1"
-                    />
+      
+                    <p>
+                      Length: $l$=
+                      <span id="rbfLengthOuput" class="slider-output">value:</span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="2"
+                        value="1"
+                        class="slider2"
+                        id="rbfLengthSlider"
+                        step="0.1"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-4">
-                <div id="periodic-div" class="kernel-options">
-                  <!-- Header -->
-                  <div class="kernel-header">
-                    <h4>Periodic Kernel</h4>
-                    <div class="kernel-equation">
-                      $\sigma^2 \exp \left(-\frac{2}{\ell^2}\sin^2 \left( \pi \frac{\lvert x_a - x_b \rvert}{p}\right) \right)$
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <div id="linear-div" class="kernel-options">
+                    <!-- Header -->
+                    <div class="kernel-header">
+                      <h4>Linear Kernel</h4>
+                      <div class="kernel-equation">
+                        $\sigma_b^2 + \sigma^2 (x - c)(x^\prime - c)$
+                        </div>
+                      </div>
+      
+                    <div class="box ratio1_1">
+                      <div class="box-content">
+                        <div id="linear-heatmap" class="kernel-heatmap"></div>
                       </div>
                     </div>
-    
-                  <div class="box ratio1_1">
-                    <div class="box-content">
-                      <div id="periodic-heatmap" class="kernel-heatmap"></div>
+      
+                    <p>
+                      Variance: $\sigma$ =
+                      <span id="linearSigmaAOuput" class="slider-output"></span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="1"
+                        value="0.5"
+                        class="slider2"
+                        id="linearSigmaASlider"
+                        step="0.1"
+                      />
+                    </div>
+                    <p>
+                      Variance: $\sigma_b$ =
+                      <span id="linearSigmaBOuput" class="slider-output"></span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="1"
+                        value="0.5"
+                        class="slider2"
+                        id="linearSigmaBSlider"
+                        step="0.1"
+                      />
+                    </div>
+      
+                    <p>
+                      Offset: $c$ =
+                      <span id="linearOffsetOuput" class="slider-output">value:</span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="-2"
+                        max="2"
+                        value="0"
+                        class="slider2"
+                        id="linearOffsetSlider"
+                        step="0.1"
+                      />
                     </div>
                   </div>
-    
-                  <p>
-                    Variance: $\sigma$ =
-                    <span id="periodicSigmaOuput" class="slider-output"></span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="1"
-                      value="0.5"
-                      class="slider2"
-                      id="periodicSigmaSlider"
-                      step="0.1"
-                    />
-                  </div>
-                  <p>
-                    Length: $l$ =
-                    <span id="periodicLengthOuput" class="slider-output"></span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="2"
-                      value="1"
-                      class="slider2"
-                      id="periodicLengthSlider"
-                      step="0.1"
-                    />
-                  </div>
-    
-                  <p>
-                    Periodicity: $p$ =
-                    <span id="periodicPOuput" class="slider-output">value:</span>
-                  </p>
-                  <div class="slidecontainer">
-                    <input
-                      type="range"
-                      min="0.1"
-                      max="6"
-                      value="3.14"
-                      class="slider2"
-                      id="periodicPSlider"
-                      step="0.1"
-                    />
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                  <div id="periodic-div" class="kernel-options">
+                    <!-- Header -->
+                    <div class="kernel-header">
+                      <h4>Periodic Kernel</h4>
+                      <div class="kernel-equation">
+                        $\sigma^2 \exp \left(-\frac{2}{\ell^2}\sin^2 \left( \pi \frac{\lvert x_a - x_b \rvert}{p}\right) \right)$
+                        </div>
+                      </div>
+      
+                    <div class="box ratio1_1">
+                      <div class="box-content">
+                        <div id="periodic-heatmap" class="kernel-heatmap"></div>
+                      </div>
+                    </div>
+      
+                    <p>
+                      Variance: $\sigma$ =
+                      <span id="periodicSigmaOuput" class="slider-output"></span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="1"
+                        value="0.5"
+                        class="slider2"
+                        id="periodicSigmaSlider"
+                        step="0.1"
+                      />
+                    </div>
+                    <p>
+                      Length: $l$ =
+                      <span id="periodicLengthOuput" class="slider-output"></span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="2"
+                        value="1"
+                        class="slider2"
+                        id="periodicLengthSlider"
+                        step="0.1"
+                      />
+                    </div>
+      
+                    <p>
+                      Periodicity: $p$ =
+                      <span id="periodicPOuput" class="slider-output">value:</span>
+                    </p>
+                    <div class="slidecontainer">
+                      <input
+                        type="range"
+                        min="0.1"
+                        max="6"
+                        value="3.14"
+                        class="slider2"
+                        id="periodicPSlider"
+                        step="0.1"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="center-text button-container">
-            <button
-              id="rbf-button"
-              onclick="makeActive(rbf, 'rbf-button')"
-              class="gp-button kernel-button activated"
-            >
-              RBF Kernel
-            </button>
-            <button
-              id="linear-button"
-              onclick="makeActive(linear, 'linear-button')"
+            <div class="center-text button-container">
+              <button
+                id="rbf-button"
+                onclick="makeActive(rbf, 'rbf-button')"
+                class="gp-button kernel-button activated"
+              >
+                RBF Kernel
+              </button>
+              <button
+                id="linear-button"
+                onclick="makeActive(linear, 'linear-button')"
+                class="gp-button kernel-button"
+              >
+                Linear Kernel
+              </button>
+              <button
+              id="periodic-button"
+              onclick="makeActive(pdk, 'periodic-button')"
               class="gp-button kernel-button"
             >
-              Linear Kernel
+              Periodic
             </button>
-            <button
-            id="periodic-button"
-            onclick="makeActive(pdk, 'periodic-button')"
-            class="gp-button kernel-button"
-          >
-            Periodic
-          </button>
-            <button onclick="resetObservations()" class="gp-button">
-              Reset Chart
-            </button>
+              <button onclick="resetObservations()" class="gp-button">
+                Reset Chart
+              </button>
+            </div>
+            <canvas id="myChart" width="400" height="266.6"></canvas>
+            <script src="js/GP.js"></script>
           </div>
-          <canvas id="myChart" width="400" height="266.6"></canvas>
-          <script src="js/GP.js"></script>
         </div>
       </div>
-    </body>
+    </section>
+  </body>
 </html>
