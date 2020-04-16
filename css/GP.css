@@ -1,1 +1,169 @@
-../../../Website/edward-rees.com/assets/css/GP.css
+canvas{
+  margin-top: 0px;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  display: inline-block;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider-output {
+  display: inline-block;
+}
+
+.button-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button.gp-button{
+  width: 110px;
+  height: 30px;
+  border-radius: 25px;
+  border: None;
+  background-color: #b4b4b9;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+button:hover{
+  color: #333333;
+  -webkit-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+button.kernel-button.activated{
+  background-color: #484852;
+  color: white;
+}
+
+.kernel-options{
+  width: 80%;
+  text-align: center;
+  font-size: 13px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.kernel-options p{
+    margin-bottom: 1px;
+    margin-top: 3px;
+    font-size: inherit;
+}
+
+.kernel-heatmap {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.kernels-container{
+  margin-bottom: 30px;
+}
+.kernel-header{
+  margin-bottom: 15px;
+}
+.kernel-header .kernel-equation {
+  padding-top: 5px;
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.box {
+  position: relative;
+  width: 90%;
+  float: left;
+  font-size: 12px;
+  margin: 0 5% 15px 5%;
+}
+
+.box:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  /* initial ratio of 1:1*/
+}
+
+.ratio2_1:before {
+  padding-top: 50%;
+}
+
+.ratio1_2:before {
+  padding-top: 200%;
+}
+
+.ratio4_3:before {
+  padding-top: 75%;
+}
+
+.ratio16_9:before {
+  padding-top: 56.25%;
+}
+
+.box-content {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* Styling */
+  padding: 0px;
+  text-align: center;
+  vertical-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.grey-border{
+  border: solid rgb(220, 220, 220);
+  border-width: 1px 1px 1px 1px;
+}
+
+.center-align{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-width{
+  max-width: 500px;
+}
+
+.center-text{
+  text-align: center;
+}
