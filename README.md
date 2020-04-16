@@ -11,4 +11,4 @@ git clone https://github.com/erees1/js-GP.git
 
 
 ## Live Demo
-For a live Demo visit my [website](edward-rees.com/gp)
+For a live Demo visit my [website](https://edward-rees.com/gp)
