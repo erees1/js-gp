@@ -1,14 +1,17 @@
 # Gaussian Process Demo
 
-![Screenshot](README.assets/demo-screenshot.jpg)
+## Screenshot
+
+You can see the demo here but I'd really recommend visiting [the site](https://edward-rees.com/gp) to play around with it.
+
+![Screenshot](README.assets/screenshot.jpg)
 
 ## Quickstart
-1. Clone this repo
+
+You can also clone this repo and open the `index.html` file if you prefer
+
 ```bash
-git clone https://github.com/erees1/js-GP.git
+git clone https://github.com/erees1/js-GP.git --recurse-submodules
+cd js-GP
+open index.html
 ```
-2. Open GP.html
-
-
-## Live Demo
-For a live Demo visit my [website](https://edward-rees.com/gp)
