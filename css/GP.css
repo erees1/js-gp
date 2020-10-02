@@ -52,14 +52,23 @@ canvas{
 }
 
 button.gp-button{
-  width: 110px;
-  height: 30px;
-  border-radius: 25px;
+  border-radius: 5px;
   border: None;
-  background-color: #b4b4b9;
-  color: white;
-  margin-left: 10px;
-  margin-right: 10px;
+  /* background-color: #b4b4b9; */
+  
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 0.83em;
+}
+
+button.reset-button{
+  background-color: #c98984;
+  border-radius: 5px;
+  border: None;
+  color: inherit;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 0.83em;
 }
 
 button:hover{
@@ -74,9 +83,9 @@ button.kernel-button.activated{
 }
 
 .kernel-options{
-  width: 80%;
+  width: 95%;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.76em;
   margin-right: auto;
   margin-left: auto;
 }
@@ -97,11 +106,13 @@ button.kernel-button.activated{
 }
 .kernel-header{
   margin-bottom: 15px;
+  font-size: 1.3em;
 }
 .kernel-header .kernel-equation {
   padding-top: 5px;
-  font-size: 16px;
-  min-height: 40px;
+  font-size: 0.8em;
+  min-height: 50px;
+  line-height: 50px;
 }
 
 .box {
@@ -167,3 +178,4 @@ button.kernel-button.activated{
 .center-text{
   text-align: center;
 }
+
